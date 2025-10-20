@@ -1,56 +1,144 @@
-
 "use client";
-import About from './components/About/page';
-import Projects from './components/Projects/page';
-import Image from 'next/image';
-import {motion} from 'framer-motion';
-import Link from 'next/link';
-import image from '../../public/assets/image.jpg';
 
+import { motion } from "framer-motion";
+import About from "./components/About/page";
+import Projects from "./components/Projects/page";
+import Contac from "./components/Contac/page";
+import Image from "next/image";
+import { ExternalLink, Mail, Github, Linkedin, MessageSquare } from "lucide-react";
 
 export default function HomePage() {
   return (
-   <section className="grid gap-8 md:grid-cols-2 items-center">
+    <section>
       <motion.div
-        initial={{ opacity: 0, x: -18 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        <h1 className="text-4xl md:text-5xl font-extrabold">
-          Hi, I'm <span className="bg-gradient-to-r from-indigo-400 to-purple-500 bg-clip-text text-transparent">Nisansala Gamachchige</span>
-        </h1>
-        <p className="mt-4 text-lg text-slate-500 dark:text-slate-300 max-w-xl">
-          BICT undergraduate | Software Engineering & Web Developer. I build MERN web apps — Rare Medicine Finder, Coffee Shop app, School Management and more.
-        </p>
-
-        <div className="mt-6 flex gap-3">
-         <Link href= "./components/Projects" className="inline-block px-5 py-3 rounded-lg shadow-sm font-medium bg-accent-400 text-white hover:brightness-90">
-            View Projects
-          </Link>
-          <Link href= "./components/About" className="inline-block px-5 py-3 rounded-lg border border-slate-200 dark:border-slate-700">
-            Contact Me
-          </Link>
-        </div>
-
-        <ul className="mt-8 text-sm text-slate-500 dark:text-slate-400 space-y-1">
-          <li><strong>Skills:</strong> JavaScript, React, Next.js, Node.js, MongoDB, CSS</li>
-          <li><strong>Interests:</strong> Web dev, UX, Cloud fundamentals, Project management</li>
-        </ul>
-      </motion.div>
-
-      <motion.div
-        className="flex justify-center"
-        initial={{ opacity: 0, y: 12 }}
+        initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
+        exit={{ opacity: 0, y: -20 }}
+        transition={{ duration: 0.5 }}
+        className="px-8 bg-[#020617] mt-30 min-h-screen"
       >
-        <div className="w-56 h-56 md:w-72 md:h-72 rounded-2xl overflow-hidden shadow-2xl">
-          <Image src="/assets/image.jpg" alt="Nisansala Gamachchige" width={400} height={400} className="object-cover"/>
+        <div className="flex flex-col md:flex-row items-center justify-between gap-12">
+          {/* ===== Left Section (Text) ===== */}
+          <div className="flex-1">
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent"
+            >
+              Nisansala Gamachchige
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+              className="text-2xl md:text-3xl text-gray-300 mb-4"
+            >
+              Software Engineering Undergraduate
+            </motion.p>
+
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+              className="text-lg text-gray-400 mb-8 max-w-2xl"
+            >
+              3rd-year BICT student at the University of Sri Jayewardenepura,
+              passionate about web development and building innovative
+              solutions. Winner of Sirasa Lakshapathi.
+            </motion.p>
+
+
+
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8 }}
+              className="flex gap-4 flex-wrap"
+            >
+              <motion.a
+                href="https://github.com/Nisansala2"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2"
+              >
+                View Projects <ExternalLink size={20} />
+              </motion.a>
+
+              <motion.a
+                href="mailto:nisansalagamchchige@gmail.com"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-8 py-4 border-2 border-purple-500 text-purple-400 rounded-full font-semibold hover:bg-purple-500 hover:text-white transition-all duration-300 flex items-center gap-2"
+              >
+                Contact Me <Mail size={20} />
+              </motion.a>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1 }}
+              className="mt-12 flex gap-6"
+            >
+              <motion.a
+                href="https://github.com/Nisansala2"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.2, rotate: 5 }}
+                className="text-gray-400 hover:text-white transition-colors"
+              >
+                <Github size={28} />
+              </motion.a>
+
+              <motion.a
+                href="https://medium.com/@nisansalagamchchige"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.2, rotate: 5 }}
+                className="text-gray-400 hover:text-white transition-colors"
+              >
+                <MessageSquare size={28} />
+              </motion.a>
+
+              <motion.a
+                href="https://acesse.one/hrUVl"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.2, rotate: 5 }}
+                className="text-gray-400 hover:text-white transition-colors"
+              >
+                <Linkedin size={28} />
+              </motion.a>
+            </motion.div>
+
+            
+          </div>
+
+          {/* ===== Right Section (Profile Image) ===== */}
+          <div className="flex-1 flex justify-center md:justify-end mt-7 md:mt-0">
+            <div className="relative w-64 h-80 md:w-[420px] md:h-[560px] rounded-2xl overflow-hidden border-2 border-white-500 shadow-lg">
+              <Image
+                src="/assets/cv1.png"
+                alt="Nisansala Gamachchige"
+                fill
+                className="object-cover object-center scale-100 hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+          </div>
+          
         </div>
+        
+
+        {/* ===== Other Sections ===== */}
+        <About />
+        <Projects />
+        <Contac />
       </motion.div>
     </section>
-  
-
-   
   );
 }

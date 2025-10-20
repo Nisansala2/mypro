@@ -22,16 +22,18 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className="  bg-[#0f172a]"
       >
-        <div style={{display:'flex'}}>
+        <div style={{display:'flex'}} >
+          <div className="w-73 h-screen fixed left-0 top-0 shadow-lg">
         <Navebar/>
+        </div>
 
-        <div style ={{ marginLeft:'200px', width:'100%', padding:'20px'}}>
-        {children}
+        <div className="ml-64 flex-1 min-h-screen flex-col  w-full flex items-center justify-center px-8 bg-[#020617] ">
+         <main className="flex-grow p-6">{children}</main>
+          </div>  
+         </div>
         <Footer/>
-        </div>
-        </div>
         
 
       </body>
