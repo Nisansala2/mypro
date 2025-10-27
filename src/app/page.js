@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import About from "./components/About/page";
 import Projects from "./components/Projects/page";
 import Contac from "./components/Contac/page";
+
 import Image from "next/image";
 import { ExternalLink, Mail, Github, Linkedin, MessageSquare } from "lucide-react";
 
@@ -138,6 +139,7 @@ export default function HomePage() {
         <About />
         <Projects />
         <Contac />
+        
       </motion.div>
     </section>
   );

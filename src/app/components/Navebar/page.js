@@ -91,7 +91,7 @@ function NavLink({ href, name, icon, delay = 0, onClick }) {
       {/* Sidebar */}
       <motion.aside
         initial={false}
-       animate={{ x: !isMobile || open ? 0 : '-100%' }}
+        animate={{ x: open ? 0 : '-100%' }}
         transition={{ duration: 0.3 }}
         className={`fixed md:static z-40 top-0 left-0 h-full w-64 md:w-72 flex flex-col items-center py-8 space-y-8 
         bg-[#0f172a] text-white border-r border-slate-700/70 shadow-lg rounded-r-3xl`}
