@@ -3,12 +3,15 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation'; 
 import Image from 'next/image';
+import { Menu, X } from 'lucide-react';
+import { useState, useEffect } from 'react';
+
 
 // ─────────────────────────────── 
 // 🔹 NavLink Component 
 //  ─────────────────────────────── 
 
-function NavLink({ href, name, icon, delay = 0 }) {
+function NavLink({ href, name, icon, delay = 0, onClick }) {
   const path = usePathname(); 
   const isActive = path === href; 
 
@@ -40,7 +43,10 @@ function NavLink({ href, name, icon, delay = 0 }) {
 
         {/* Active Glow */} 
         {isActive
-         && ( <motion.span layoutId="active-glow" className="absolute inset-0 rounded-3xl border-2 border-sky-400/60 shadow-[0_0_15px_#38bdf8]" /> )} 
+         && ( <motion.span layoutId="active-glow" 
+         className="absolute inset-0 rounded-3xl border-2 border-sky-400/60 shadow-[0_0_15px_#38bdf8]" 
+         /> 
+         )} 
 
          </Link> 
           </motion.div> ); 
@@ -50,6 +56,16 @@ function NavLink({ href, name, icon, delay = 0 }) {
  //  🔹 Sidebar Component 
 // ─────────────────────────────── 
    export default function Sidebar() {
+      const [open, setOpen] = useState(false);
+      const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
     
      const items = [ 
       { href: '/', icon: '🏠', name: 'Home' }, 
@@ -60,42 +76,68 @@ function NavLink({ href, name, icon, delay = 0 }) {
 
        
        return (
-        <aside 
-        className="min-h-screen items-center py-8 space-y-8 bg-[#0f172a] text-white border-r border-slate-700/70 shadow-lg rounded-r-3xl">
+         <>
+     {/* 🔹 Toggle button (visible only on mobile) */}
+      {isMobile && (
+        <button
+          className="fixed top-4 left-4 z-50 bg-sky-600 p-2 rounded-xl shadow-lg"
+          onClick={() => setOpen(!open)}
+        >
+          {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+        </button>
+      )}
 
-        {/* ── Profile Section ── */} 
-                    
-                    
-           <motion.div
-            initial={{ opacity: 0 }}
-             animate={{ opacity: 1 }} 
-             transition={{ delay: 0.1 }} 
-             className="flex flex-col items-center space-y-4" > 
-         <h2 className="text-xl font-semibold text-amber-400"> NG </h2> 
-         <div className="w-40 h-40 rounded-full overflow-hidden border-2 border-sky-500 shadow-lg"> 
-        <Image src="/assets/image.jpg" alt="Nisansala Gamachchige" width={192} height={192} className="object-cover" /> 
-        </div> 
-          </motion.div> 
 
-      
-   {/* ── Navigation Links ── */} 
-       <div> <nav className="flex-1 flex flex-col ml-1.5 space-y-4 items-center"> 
-                          
-          {items.map((item, idx) => ( <NavLink 
-            key={item.href}
-             href={item.href}
-            name={item.name} 
-            icon={item.icon} 
-            delay={idx * 0.05} /> ))} 
-            </nav>
+      {/* Sidebar */}
+      <motion.aside
+        initial={false}
+       animate={{ x: !isMobile || open ? 0 : '-100%' }}
+        transition={{ duration: 0.3 }}
+        className={`fixed md:static z-40 top-0 left-0 h-full w-64 md:w-72 flex flex-col items-center py-8 space-y-8 
+        bg-[#0f172a] text-white border-r border-slate-700/70 shadow-lg rounded-r-3xl`}
+      >
+        {/* ── Profile Section ── */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.1 }}
+          className="flex flex-col items-center space-y-4"
+        >
+          <h2 className="text-xl font-semibold text-amber-400">NG</h2>
+          <div className="w-32 h-32 rounded-full overflow-hidden border-2 border-sky-500 shadow-lg">
+            <Image
+              src="/assets/image.jpg"
+              alt="Profile"
+              width={128}
+              height={128}
+              className="object-cover"
+            />
+          </div>
+        </motion.div>
 
-         <motion.a href="/assets/NG_CV.pdf" 
-             download whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }} 
-            className="px-8 ml-14 mt-10 py-2 bg-gradient-to-r from-blue-800 to-emerald-600 text-white rounded-full font-semibold hover:shadow-xl transition-all duration-300 flex items-center gap-1 w-42" >
-               Download CV 
-                </motion.a> 
-                </div> 
-                </aside> 
-                ); 
-               }
+        {/* ── Navigation Links ── */}
+        <nav className="flex flex-col space-y-4 items-center">
+          {items.map((item, idx) => (
+            <NavLink
+              key={item.href}
+              {...item}
+              delay={idx * 0.05}
+              onClick={() => setOpen(false)} // closes sidebar on mobile
+            />
+          ))}
+        </nav>
+
+        {/* ── CV Download Button ── */}
+        <motion.a
+          href="/assets/NG_CV.pdf"
+          download
+          whileHover={{ scale: 1.05, y: -2 }}
+          whileTap={{ scale: 0.95 }}
+          className="px-6 mt-auto py-2 bg-gradient-to-r from-blue-700 to-emerald-600 text-white rounded-full font-semibold hover:shadow-xl transition-all duration-300"
+        >
+          Download CV
+        </motion.a>
+      </motion.aside>
+    </>
+  );
+}
