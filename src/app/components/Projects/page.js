@@ -34,12 +34,12 @@ export default function ProjectsPage  ()  {
       link: '#',
        image:'assets/school.png'
     },
-    {
-      title: 'User Management System',
-      description: 'Web application to manage user accounts, roles, and permissions with RESTful API',
-      tech: ['Node.js', 'Express', 'MongoDB'],
+   {
+      title: 'Daily mood tracker',
+      description: 'to make it simple to log moods each day and later see patterns that reflect your mental health journey',
+      tech: ['JavaScript', 'Next Js', 'Visualize trends with charts'],
       link: '#',
-       image:'assets/hostel.png'
+       image:'assets/mood.png'
     },
     {
       title: 'Weather Finder System',
@@ -48,6 +48,9 @@ export default function ProjectsPage  ()  {
       link: '#',
        image:'assets/weath.png'
     }
+ 
+
+
   ];
 
   return (
