@@ -44,8 +44,8 @@ export default function AboutPage () {
           className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-8 mb-12 shadow-xl"
         >
           <p className="text-gray-300 text-lg leading-relaxed mb-6">
-            I'm a dedicated 3rd-year BICT undergraduate at the University of Sri Jayewardenepura 
-            with a strong interest in software engineering and web development. I'm passionate about 
+            I &apos m a dedicated 3rd-year BICT undergraduate at the University of Sri Jayewardenepura 
+            with a strong interest in software engineering and web development. I &apos m passionate about 
             building innovative solutions and constantly learning new technologies.
           </p>
           
@@ -62,7 +62,7 @@ export default function AboutPage () {
               <ul className="text-gray-300 text-sm space-y-2">
                 <li>🏆 Winner of Sirasa Lakshapathi</li>
                 <li>👥 Member of ICT Society (ICTS)</li>
-                <li>🔐 Organizer of J'pura CryptX 1.0</li>
+                <li>🔐 Organizer of J &apos pura CryptX 1.0</li>
                 <li>📢 Page Manager at Voice Tech, USJ</li>
               </ul>
             </div>

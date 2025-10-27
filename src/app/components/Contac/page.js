@@ -5,7 +5,7 @@ import { Mail, Github, MessageSquare } from 'lucide-react';
 import { useState } from 'react';
 
 
-export default function copage() {
+export default function Copage() {
 
   const [formData, setFormData] = useState({
     name: '',
