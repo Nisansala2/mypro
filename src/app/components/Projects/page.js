@@ -11,28 +11,28 @@ export default function ProjectsPage  ()  {
       description: 'Management system to handle student registrations, room allocations, and fee tracking',
       tech: ['React', 'Node.js', 'MongoDB'],
       link: '#',
-      image:"assets/image.jpg",
+      image:"assets/uni.png",
     },
     {
       title: 'Coffee Shop Web Application',
       description: 'Built using MERN stack with login system, menu management, and custom coffee builder',
       tech: ['MongoDB', 'Express', 'React', 'Node.js'],
       link: '#',
-       image:'assets/cv.jpg'
+       image:'assets/coffee.jpg'
     },
     {
       title: 'Rare Medicine Finder',
       description: 'Web application to help users locate pharmacies stocking rare medicines with Google Maps API integration',
       tech: ['React', 'Node.js', 'Google Maps API'],
       link: '#',
-       image:'assets/hostel.png'
+       image:'assets/medi.png'
     },
     {
       title: 'School Management System',
       description: 'Web application for managing student data, attendance, and exam records',
       tech: ['HTML', 'CSS', 'Node.js', 'MongoDB'],
       link: '#',
-       image:'assets/hostel.png'
+       image:'assets/school.png'
     },
     {
       title: 'User Management System',
@@ -46,7 +46,7 @@ export default function ProjectsPage  ()  {
       description: 'Web application to fetch and display real-time weather information based on user location',
       tech: ['JavaScript', 'Weather API', 'HTML/CSS'],
       link: '#',
-       image:'assets/hostel.png'
+       image:'assets/weath.png'
     }
   ];
 
